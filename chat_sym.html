@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IndexBot - Investment Profiling</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+
+    .chat-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .message {
+      margin: 15px 0;
+      padding: 10px 15px;
+      border-radius: 10px;
+      line-height: 1.5;
+      max-width: 80%;
+    }
+
+    .bot {
+      background-color: #e8f0fe;
+      align-self: flex-start;
+    }
+
+    .user {
+      background-color: #d1ffd6;
+      align-self: flex-end;
+      text-align: right;
+    }
+
+    .message-container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .question {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="message-container">
+
+      <div class="message bot">
+        👋 Hi there! I’m here to help you find the best index investments for your goals. Let’s start by understanding your preferences.
+      </div>
+
+      <div class="message bot">
+        <span class="question">What’s your main investment objective?</span><br/>
+        (For example: growth, income, capital preservation, ESG...)
+      </div>
+      <div class="message user">I’m looking for long-term growth.</div>
+
+      <div class="message bot">
+        <span class="question">How would you describe your risk appetite?</span><br/>
+        Conservative, moderate, or aggressive?
+      </div>
+      <div class="message user">I’d say moderate.</div>
+
+      <div class="message bot">
+        <span class="question">Do you have a preferred investment geography?</span><br/>
+        (Global, US, Europe, Emerging Markets...)
+      </div>
+      <div class="message user">Global with a tilt toward emerging markets.</div>
+
+      <div class="message bot">
+        <span class="question">Any sector or industry preferences?</span><br/>
+        (Tech, healthcare, energy, etc.)
+      </div>
+      <div class="message user">Tech and clean energy.</div>
+
+      <div class="message bot">
+        <span class="question">What’s your time horizon?</span><br/>
+        Short-term, medium-term, or long-term?
+      </div>
+      <div class="message user">Long-term (10+ years).</div>
+
+      <div class="message bot">
+        <span class="question">Interested in any specific themes?</span><br/>
+        (AI, sustainability, inflation hedge...)
+      </div>
+      <div class="message user">AI and sustainability.</div>
+
+      <div class="message bot">
+        <span class="question">Which asset classes would you like to include?</span><br/>
+        (Equity, crypto, fixed income, etc.)
+      </div>
+      <div class="message user">Mainly equity, small portion in crypto.</div>
+
+      <div class="message bot">
+        <span class="question">Do you have any currency preferences?</span>
+      </div>
+      <div class="message user">Prefer EUR, okay with USD too.</div>
+
+      <div class="message bot">
+        ✅ All set! I’ll now recommend indices focused on:<br/>
+        • Growth-oriented global equity<br/>
+        • Moderate volatility<br/>
+        • Tech and clean energy sectors<br/>
+        • AI and sustainability themes<br/>
+        • EUR/USD exposure<br/>
+        • With a touch of crypto
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

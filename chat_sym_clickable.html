@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>IndexBot Chat</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .chatbox {
+      max-width: 600px;
+      margin: auto;
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .bot, .user {
+      margin: 10px 0;
+      padding: 10px 15px;
+      border-radius: 10px;
+      max-width: 80%;
+      line-height: 1.5;
+    }
+
+    .bot {
+      background: #e8f0fe;
+      align-self: flex-start;
+    }
+
+    .user {
+      background: #d1ffd6;
+      align-self: flex-end;
+      text-align: right;
+      margin-left: auto;
+    }
+
+    .options {
+      margin-top: 10px;
+    }
+
+    .option-btn {
+      margin: 5px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 8px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .option-btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<div class="chatbox" id="chatbox">
+  <div class="bot">👋 Hi! I’m IndexBot. Let’s build your perfect index. Ready?</div>
+  <div class="options">
+    <button class="option-btn" onclick="nextStep(0)">Yes, let's go!</button>
+  </div>
+</div>
+
+<script>
+  const steps = [
+    {
+      question: "What’s your main investment objective?",
+      options: ["Growth", "Income", "Capital Preservation", "ESG"]
+    },
+    {
+      question: "How would you describe your risk appetite?",
+      options: ["Conservative", "Moderate", "Aggressive"]
+    },
+    {
+      question: "Preferred investment geography?",
+      options: ["Global", "US", "Europe", "Emerging Markets"]
+    },
+    {
+      question: "Sector or industry preferences?",
+      options: ["Tech", "Healthcare", "Energy", "Clean Energy"]
+    },
+    {
+      question: "What’s your time horizon?",
+      options: ["Short-term", "1–5 years", "Long-term (10+ years)"]
+    },
+    {
+      question: "Any specific investment themes?",
+      options: ["AI", "Sustainability", "Innovation", "Inflation Hedging"]
+    },
+    {
+      question: "Which asset classes?",
+      options: ["Equity", "Fixed Income", "Commodities", "Crypto"]
+    },
+    {
+      question: "Currency preference?",
+      options: ["EUR", "USD", "No Preference"]
+    }
+  ];
+
+  const chatbox = document.getElementById('chatbox');
+  let answers = [];
+
+  function nextStep(stepIndex) {
+    if (stepIndex === 0 && answers.length === 0) {
+      chatbox.innerHTML += `<div class="user">Yes, let's go!</div>`;
+    }
+
+    if (stepIndex < steps.length) {
+      const step = steps[stepIndex];
+      chatbox.innerHTML += `<div class="bot">${step.question}</div>`;
+      const optionButtons = step.options.map(opt =>
+        `<button class="option-btn" onclick="handleAnswer('${opt}', ${stepIndex + 1})">${opt}</button>`
+      ).join('');
+      chatbox.innerHTML += `<div class="options">${optionButtons}</div>`;
+    } else {
+      showSummary();
+    }
+    scrollToBottom();
+  }
+
+  function handleAnswer(answer, nextIndex) {
+    const optionsDivs = document.querySelectorAll('.options');
+    optionsDivs.forEach(div => div.remove());
+
+    chatbox.innerHTML += `<div class="user">${answer}</div>`;
+    answers.push(answer);
+    nextStep(nextIndex);
+  }
+
+  function showSummary() {
+    chatbox.innerHTML += `<div class="bot">✅ All set! Here's a summary of your profile:</div>`;
+    const keys = [
+      "Objective",
+      "Risk Appetite",
+      "Geography",
+      "Sector",
+      "Time Horizon",
+      "Themes",
+      "Asset Class",
+      "Currency"
+    ];
+
+    answers.forEach((answer, i) => {
+      chatbox.innerHTML += `<div class="bot"><strong>${keys[i]}:</strong> ${answer}</div>`;
+    });
+
+    scrollToBottom();
+  }
+
+  function scrollToBottom() {
+    window.scrollTo(0, document.body.scrollHeight);
+  }
+</script>
+
+</body>
+</html>
